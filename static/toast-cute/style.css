@@ -1,49 +1,41 @@
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap");
 
+/* Wrapper for Alert */
 .alert-wrapper {
   display: flex;
-  width: 100%;
-  height: 100%;
   align-items: center;
   justify-content: center;
-  margin: 0px auto;
-  padding: 0px auto;
-  left: 0;
-  top: 0;
-  overflow: hidden;
   position: fixed;
-  background: rgb(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
   z-index: 999999;
+  overflow: hidden;
 }
 
+/* Animation for Alert Frame */
 @keyframes open-frame {
-  0% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(0.95);
-  }
-  50% {
-    transform: scale(0.97);
-  }
-  75% {
-    transform: scale(0.93);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(0.95); }
+  50% { transform: scale(0.97); }
+  75% { transform: scale(0.93); }
 }
 
+/* Main Alert Frame */
 .alert-frame {
   background: #fff;
-  min-height: 400px;
   width: 300px;
-  box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.2);
+  min-height: 400px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   animation: open-frame 0.3s linear;
 }
 
+/* Alert Header */
 .alert-header {
   display: flex;
   flex-direction: row;
@@ -52,93 +44,81 @@
   border-top-right-radius: 5px;
 }
 
+/* Alert Image */
 .alert-img {
   height: 80px;
   position: absolute;
   left: 0;
   right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   align-self: center;
 }
 
+/* Alert Close Button */
+.alert-close, .alert-close-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Dosis", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 30px;
+  transition: color 0.5s, background 0.5s;
+}
+
+/* Default Close Button */
 .alert-close {
   width: 30px;
   height: 30px;
-  color: rgb(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Dosis", sans-serif;
-  font-weight: 700;
   font-size: 16px;
-  cursor: pointer;
-  line-height: 30px;
-  transition: color 0.5s;
-  margin-left: auto;
-  margin-right: 5px;
-  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.2);
+  margin: 5px 5px 0 auto;
 }
 
+/* Circular Close Button */
 .alert-close-circle {
   width: 30px;
   height: 30px;
+  font-size: 12px;
   background: #e4eae7;
   color: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 17.5px;
-  margin-top: -15px;
-  margin-right: -15px;
-  font-family: "Dosis", sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  cursor: pointer;
-  line-height: 30px;
-  transition: background 0.5s;
-  margin-left: auto;
+  border-radius: 50%;
+  margin: -15px -15px 0 auto;
 }
 
-.alert-close-circle:hover {
-  background: #fff;
-}
+/* Hover States */
+.alert-close:hover { color: rgba(0, 0, 0, 0.5); }
+.alert-close-circle:hover { background: #fff; }
 
-.alert-close:hover {
-  color: rgb(0, 0, 0, 0.5);
-}
-
+/* Alert Body */
 .alert-body {
-  padding: 30px 30px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
+/* Title and Message Styles */
 .alert-title {
-  font-size: 18px !important;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 35px;
+  font-size: 18px;
   color: #222;
-  align-self: center;
+  margin-bottom: 35px;
 }
 
 .alert-message {
-  font-size: 15px !important;
-  color: #666;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 15px;
-  text-align: center;
-  margin-bottom: 35px;
+  color: #666;
   line-height: 1.6;
-  align-self: center;
+  margin-bottom: 35px;
 }
 
-.alert-button {
-  min-width: 140px;
+/* Buttons */
+.alert-button, .confirm-button, .cancel-button {
+  min-width: 100px;
   height: 35px;
   border-radius: 20px;
   font-family: "Open Sans", sans-serif;
@@ -149,210 +129,98 @@
   cursor: pointer;
   transition: background 0.5s;
   padding: 0 15px;
-  align-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-.alert-button:focus {
-  outline: 0;
+/* Button Focus State */
+.alert-button:focus, .confirm-button:focus, .cancel-button:focus {
+  outline: none;
 }
 
+/* Question Button Wrapper */
 .question-buttons {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  gap: 10px; /* Dùng gap để tạo khoảng cách */
 }
 
-.confirm-button {
-  min-width: 100px;
-  height: 35px;
-  border-radius: 20px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.5s;
-  padding: 0 15px;
-  margin-right: 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.confirm-button:focus {
-  outline: 0;
-}
-
-.cancel-button {
-  min-width: 100px;
-  height: 35px;
-  border-radius: 20px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1.6;
-  transition: background 0.5s;
-  padding: 0 15px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cancel-button:focus {
-  outline: 0;
-}
-
-@keyframes open-toast {
-  0% {
-    transform: scaleX(1) scaleY(1);
-  }
-  20%,
-  45% {
-    transform: scaleX(1.35) scaleY(0.1);
-  }
-  65% {
-    transform: scaleX(0.8) scaleY(1.7);
-  }
-  80% {
-    transform: scaleX(0.6) scaleY(0.85);
-  }
-  100% {
-    transform: scaleX(1) scaleY(1);
-  }
-}
-
+/* Toast Container */
 .toast-container {
+  position: fixed;
   top: 15px;
   right: 15px;
-  overflow: hidden;
-  position: fixed;
   border-radius: 5px;
-  box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   animation: open-toast 0.3s linear;
   z-index: 999999;
 }
 
+/* Toast Animation */
+@keyframes open-toast {
+  0%, 100% { transform: scale(1); }
+  20%, 45% { transform: scaleX(1.35) scaleY(0.1); }
+  65% { transform: scaleX(0.8) scaleY(1.7); }
+  80% { transform: scaleX(0.6) scaleY(0.85); }
+}
+
+/* Toast Frame */
 .toast-frame {
   padding: 5px 15px;
   display: flex;
-  min-width: 100px;
-  height: 60px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
   align-items: center;
-  flex-wrap: wrap;
+  height: 60px;
+  border-radius: 10px 10px 0 0;
 }
 
-.toast-img {
-  height: 40px;
-}
-
+/* Toast Image and Message */
+.toast-img { height: 40px; }
 .toast-message {
-  font-size: 14px !important;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   color: #fff;
   margin-left: 15px;
 }
 
+/* Toast Close */
 .toast-close {
-  color: rgb(0, 0, 0, 0.2);
   font-family: "Dosis", sans-serif;
   font-weight: 700;
   font-size: 16px;
+  color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: color 0.5s;
   margin-left: 25px;
+  transition: color 0.5s;
 }
 
+.toast-close:hover { color: rgba(0, 0, 0, 0.5); }
+
+/* Toast Timer Animation */
 @keyframes timer {
-  0% {
-    width: 100%;
-  }
-  25% {
-    width: 75%;
-  }
-  50% {
-    width: 50%;
-  }
-  75% {
-    width: 25%;
-  }
-  100% {
-    width: 1%;
-  }
+  from { width: 100%; }
+  to { width: 0; }
 }
 
 .toast-timer {
-  width: 1%;
   height: 5px;
 }
 
-.toast-close:hover {
-  color: rgb(0, 0, 0, 0.5);
-}
+/* Color Variations */
+.error-bg { background: #d85261; }
+.success-bg { background: #2dd284; }
+.warning-bg { background: #fada5e; }
+.question-bg { background: #779ecb; }
+.info-bg { background: #88cef7; }
 
-.error-bg {
-  background: #d85261;
-}
+.error-timer { background: #e5a4b4; }
+.success-timer { background: #6edaa4; }
+.warning-timer { background: #fcecae; }
+.info-timer { background: #c3e6fb; }
 
-.success-bg {
-  background: #2dd284;
-}
-
-.warning-bg {
-  background: #fada5e;
-}
-
-.question-bg {
-  background: #779ecb;
-}
-
-.error-btn:hover {
-  background: #e5a4b4;
-}
-
-.success-btn:hover {
-  background: #6edaa4;
-}
-
-.warning-btn:hover {
-  background: #fcecae;
-}
-
-.info-btn:hover {
-  background: #c3e6fb;
-}
-
-.question-btn:hover {
-  background: #bacee4;
-}
-
-.error-timer {
-  background: #e5a4b4;
-}
-
-.success-timer {
-  background: #6edaa4;
-}
-
-.warning-timer {
-  background: #fcecae;
-}
-
-.info-timer {
-  background: #c3e6fb;
-}
-
-.info-bg {
-  background: #88cef7;
-}
+.error-btn:hover { background: #e5a4b4; }
+.success-btn:hover { background: #6edaa4; }
+.warning-btn:hover { background: #fcecae; }
+.info-btn:hover { background: #c3e6fb; }
+.question-btn:hover { background: #bacee4; }
